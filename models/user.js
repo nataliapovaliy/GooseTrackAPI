@@ -17,6 +17,7 @@ const userSchema = Schema({
     },
     phone: {
         type: Number,
+        required: true,
     },
     avatarURL: {
         type: String,
