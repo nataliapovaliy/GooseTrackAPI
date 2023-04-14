@@ -77,7 +77,7 @@ module.exports = {
                 .email({ maxDomainSegments: 2, tlds: { deny: ['ru'] } })
                 .required(),
         })
-        const validationResult = schema.validate(req.body);
+             const validationResult = schema.validate(req.body);
         if (validationResult.error) {
             next(new ValidationError(validationResult.error.details))
         }
