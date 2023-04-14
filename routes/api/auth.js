@@ -1,11 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { ctrlWrapper } = require("../../middlewares/ctrlWrraper");
-const { authMiddleware } = require('../../middlewares/authMiddleware');
+const { ctrlWrapper } = require("../../middlewares/ctrlWrapper");
+const { registerValidation, loginValidation } = require("../../middlewares");
+const { auth: ctrl } = require("../../controller");
 
-router.post("/register", ctrlWrapper());
-router.post("/login",  ctrlWrapper());
+router.post("/register", registerValidation, ctrlWrapper(ctrl.registerUser));
+router.post("/login", loginValidation, ctrlWrapper(ctrl.loginUser));
 
-
-
-module.exports = router
+module.exports = router;
