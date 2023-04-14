@@ -21,9 +21,8 @@ const current = async (req, res) => {
 }
 const updateUser = async (req, res) => {
     const { contactId } = req.params;
-    const { _id } = req.user
     const { name, email, phone, skype, birthday } = req.body
-    await user.updateUser(contactId, { name, email, phone, skype, birthday, owner: _id })
+    await user.updateUser(contactId, { name, email, phone, skype, birthday})
     res.json({
         status: 'success',
         message: "User updated",

@@ -1,7 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const { errorHandler, authMiddleware } = require("./middlewares");
+const { errorHandler, authMiddleware } = require("./middleware");
 const {api: ctrl } = require("./routes");
 
 const app = express();

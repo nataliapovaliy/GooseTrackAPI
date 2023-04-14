@@ -1,5 +1,5 @@
-const { logout, current } = require('./controller')
+const { logout, current, updateUser } = require('./controller')
 
 module.exports = {
-    logout, current
+    logout, current, updateUser
 }
