@@ -1,9 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const path = require("path");
 const { errorHandler, authMiddleware } = require("./middlewares");
-const {api: ctrl } = require("./routes/api");
+const {api: ctrl } = require("./routes");
 
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
