@@ -1,7 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const { errorHandler, authMiddleware } = require("./middleware");
+const { errorHandler } = require("./middleware");
 const {api: ctrl } = require("./routes");
 
 const app = express();
@@ -13,7 +13,6 @@ app.use(express.json());
 // app.use(express.static("public"));
 
 app.use("/auth", ctrl.authRouter);
-app.use(authMiddleware);
 app.use("/user", ctrl.userRouter);
 app.use("/tasks", ctrl.taskRouter);
 app.use("/columns", ctrl.columnsRouter);

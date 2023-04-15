@@ -7,22 +7,23 @@ const logout = async (req, res) => {
 }
 
 const current = async (req, res) => {
-    const { token } = req.user;
-    const { email, phone, skype, birthday, name } = await user.current(token)
+    const { email, phone, birthday, skype, name } = req.user
     res.status(200).json({
         user: {
             email,
             phone,
-            skype,
             birthday,
+            skype,
             name
         }
+
+
     })
 }
 const updateUser = async (req, res) => {
-    const { contactId } = req.params;
+    const { id } = req.user;
     const { name, email, phone, skype, birthday } = req.body
-    await user.updateUser(contactId, { name, email, phone, skype, birthday})
+    await user.updateUser(id, { name, email, phone, skype, birthday })
     res.json({
         status: 'success',
         message: "User updated",

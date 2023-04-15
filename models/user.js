@@ -17,16 +17,16 @@ const userSchema = Schema(
       unique: true,
     },
     phone: {
-      type: Number,
+      type: String,
     },
     avatarURL: {
       type: String,
     },
     skype: {
-      type: Number,
+      type: String,
     },
     birthday: {
-      type: Date,
+      type: String,
     },
     token: {
       type: String,

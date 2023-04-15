@@ -5,8 +5,8 @@ const {
   loginValidation,
   registerValidation,
   addTaskValidation,
-  userInfoValidation,
 } = require("./validationMiddleware");
+const { userInfoValidation } = require('./userInfoValidation')
 
 module.exports = {
   errorHandler,
