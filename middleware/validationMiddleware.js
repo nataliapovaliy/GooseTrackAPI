@@ -63,22 +63,5 @@ module.exports = {
         next();
     },
 
-    userInfoValidation: (req, res, next) => {
-        const schema = Joi.object({
-            name: Joi.string()
-                .alphanum()
-                .min(3)
-                .max(30),
-            phone: Joi.alternatives([Joi.string(), Joi.number()]),
-            birthday: Joi.date(),
-            skype: Joi.number(),
-            email: Joi.string()
-                .email({ maxDomainSegments: 2, tlds: { deny: ['ru'] } })
-        })
-        const validationResult = schema.validate(req.body);
-        if (validationResult.error) {
-            next(new ValidationError(validationResult.error.details))
-        }
-        next();
-    }
+  
 }

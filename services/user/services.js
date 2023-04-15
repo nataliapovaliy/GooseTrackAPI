@@ -5,10 +5,6 @@ const logout = async (id, token) => {
     return await User.findByIdAndUpdate(id, token)
 }
 
-const current = async (token) => {
-    return await User.findOne({ token })
-}
-
 const updateUser = async (id, body) => {
     const user = await User.findByIdAndUpdate(id, body, { new: true })
     if (!user) {
@@ -18,6 +14,5 @@ const updateUser = async (id, body) => {
 }
 module.exports = {
     logout,
-    current,
     updateUser
 }
