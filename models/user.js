@@ -18,15 +18,19 @@ const userSchema = Schema(
     },
     phone: {
       type: String,
+      default: null,
     },
     avatarURL: {
       type: String,
+      default: null,
     },
     skype: {
       type: String,
+      default: null,
     },
     birthday: {
-      type: String,
+      type: Date,
+      default: null,
     },
     token: {
       type: String,
