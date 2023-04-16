@@ -1,6 +1,7 @@
 const { errorHandler } = require("./errorHandler");
 const { ctrlWrapper } = require("./ctrlWrapper");
 const { authMiddleware } = require("./authMiddleware");
+const { uploadCloud } = require("./uploadCloud");
 const {
   loginValidation,
   registerValidation,
@@ -12,6 +13,7 @@ module.exports = {
   errorHandler,
   ctrlWrapper,
   authMiddleware,
+  uploadCloud,
   loginValidation,
   registerValidation,
   addTaskValidation,

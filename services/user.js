@@ -1,7 +1,7 @@
-const { User } = require('../../models')
-const { NotFoundError } = require('../../helpers/errors')
+const { User } = require('../models')
+const { NotFoundError } = require('../helpers/errors')
 
-const logout = async (id, token) => {
+const logoutUser = async (id, token) => {
     return await User.findByIdAndUpdate(id, token)
 }
 
@@ -13,6 +13,6 @@ const updateUser = async (id, body) => {
     return user;
 }
 module.exports = {
-    logout,
-    updateUser
-}
+  logoutUser,
+  updateUser,
+};

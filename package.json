@@ -13,6 +13,7 @@
     "@joi/date": "^2.1.0",
     "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
+    "cloudinary": "^1.36.1",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "dotenv": "^16.0.3",
@@ -23,6 +24,7 @@
     "mongoose": "^7.0.1",
     "morgan": "1.10.0",
     "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "nanoid": "^4.0.2",
     "supertest": "^6.3.3",
     "uuid": "^9.0.0"
