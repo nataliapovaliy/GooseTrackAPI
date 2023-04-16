@@ -6,11 +6,10 @@ module.exports = {
     userInfoValidation: (req, res, next) => {
         const schema = Joi.object({
             name: Joi.string()
-                .alphanum()
                 .min(3)
                 .max(30),
             phone: Joi.alternatives([Joi.string(), Joi.number()]),
-            birthday: Joi.date(),
+            birthday: Joi.date().iso(),
             skype: Joi.string(),
             email: Joi.string()
                 .email({ maxDomainSegments: 2, tlds: { deny: ['ru'] } })
