@@ -21,14 +21,11 @@ const current = async (req, res) => {
 };
 const update = async (req, res) => {
   const { id } = req.user;
-  const updateParam = req.body;
+  const bodyParam = req.body;
+  const { path: avatarURL } = req.file;
+  const updateParam = {...(req.file ? { avatarURL, ...bodyParam } : { ...bodyParam })};
 
-  if (req.file) {
-    const { path: avatarURL } = req.file;
-    await updateUser(id, { avatarURL, ...updateParam });
-  } else {
-    await updateUser(id, { ...updateParam });
-  }
+  await updateUser(id, updateParam);
 
   res.json({
     status: "success",
