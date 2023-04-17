@@ -8,11 +8,11 @@ const {
   uploadCloud,
 } = require("../../middleware");
 
-router.get("/logout", authMiddleware, ctrlWrapper(ctrl.logout));
-router.get("/current", authMiddleware, ctrlWrapper(ctrl.current));
+router.use(authMiddleware);
+router.get("/logout", ctrlWrapper(ctrl.logout));
+router.get("/current", ctrlWrapper(ctrl.current));
 router.patch(
   "/info",
-  authMiddleware,
   uploadCloud.single("avatar"),
   userInfoValidation,
   ctrlWrapper(ctrl.update)

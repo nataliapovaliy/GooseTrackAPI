@@ -8,7 +8,6 @@ const findUserBy = async (data) => {
 
 const regUser = async ({name, email, password }) => {
  return await User.create({ name, email, password });
-
 };
 
 const login = async (_id, token) => {
