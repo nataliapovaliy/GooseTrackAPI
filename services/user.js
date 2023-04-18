@@ -10,7 +10,6 @@ const updateUser = async (id, body) => {
     if (!user) {
         throw new NotFoundError(`Not found contact id: ${id}`)
     }
-    return user;
 }
 module.exports = {
   logoutUser,

@@ -8,7 +8,7 @@ const taskPerMth = async (req, res, next) => {
   const month = dateAt.getUTCMonth() + 1;
   const { y = year, m = month } = req.query;
 
-  const tasks = await findTasks(_id, y, m);
+  const tasks = await findTasks(_id, +y, +m);
 
   res.json(tasks);
 };
