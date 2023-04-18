@@ -3,7 +3,6 @@ const { NotFoundError } = require('../helpers/errors')
 
 
 const findTasks = async (owner, year, month) => {
-  console.log(year, month);
   const tasks = await Task.find({ owner, year, month });
   return tasks
 }

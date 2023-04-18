@@ -55,7 +55,7 @@ module.exports = {
                 .required(),
             start: Joi.string()
                 .required(),
-            createAt: Joi.string()
+            createAt: Joi.date().iso(),
 
         })
         const validationResult = schema.validate(req.body);
