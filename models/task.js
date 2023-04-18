@@ -7,15 +7,16 @@ const taskSchema = Schema(
       required: [true, "Set name for task"],
     },
     start: {
-      type: Number,
+      type: String,
       required: true,
     },
     end: {
-      type: Number,
+      type: String,
       required: true,
     },
     createAt: {
       type: Date,
+      default: Date.now(),
       required: true,
     },
     year: {
