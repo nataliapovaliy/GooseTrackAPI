@@ -22,15 +22,17 @@ const current = async (req, res) => {
 const update = async (req, res) => {
   const { id } = req.user;
   const bodyParam = req.body;
-  const { path: avatarURL } = req.file;
-  const updateParam = {...(req.file ? { avatarURL, ...bodyParam } : { ...bodyParam })};
+  let updateParam = { ...bodyParam };
+  if (req.file) {
+    const { path: avatarURL } = req.file;
+    updateParam = { avatarURL, ...bodyParam };
+  }
 
   await updateUser(id, updateParam);
-
   res.json({
     status: "success",
     message: "User updated",
-    code: 200,
+    user: updateParam,
   });
 };
 module.exports = {
