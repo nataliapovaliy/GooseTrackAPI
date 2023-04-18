@@ -47,13 +47,15 @@ module.exports = {
     addTaskValidation: (req, res, next) => {
         const schema = Joi.object({
             title: Joi.string()
-                .require(),
+                .required(),
             priority: Joi.string()
                 .valid("Low", "Medium", "Hight"),
-            end: Joi.Time()
-                .require(),
-            start: Joi.Time()
-                .require()
+            end: Joi.string()
+                .required(),
+            start: Joi.string()
+                .required(),
+            createAt: Joi.string()
+
         })
         const validationResult = schema.validate(req.body);
         if (validationResult.error) {
@@ -62,5 +64,5 @@ module.exports = {
         next();
     },
 
-  
+
 }
