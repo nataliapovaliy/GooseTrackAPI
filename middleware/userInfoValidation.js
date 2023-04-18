@@ -9,7 +9,7 @@ module.exports = {
                 .min(3)
                 .max(30),
             phone: Joi.alternatives([Joi.string(), Joi.number()]),
-            birthday: Joi.date().iso(),
+            birthday: Joi.string(),
             skype: Joi.string(),
             email: Joi.string()
                 .email({ maxDomainSegments: 2, tlds: { deny: ['ru'] } })

@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const { ValidationError } = require('../helpers/errors');
 
+
 module.exports = {
     registerValidation: (req, res, next) => {
         const schema = Joi.object({
@@ -55,6 +56,22 @@ module.exports = {
             start: Joi.string()
                 .required(),
             createAt: Joi.date().iso(),
+
+        })
+        const validationResult = schema.validate(req.body);
+        if (validationResult.error) {
+            next(new ValidationError(validationResult.error.details))
+        }
+        next();
+    },
+    updateTaskValidation: (req, res, next) => {
+        const schema = Joi.object({
+            title: Joi.string(),
+            priority: Joi.string()
+                .valid("Low", "Medium", "Hight"),
+            end: Joi.string(),
+            start: Joi.string(),
+            createAt: Joi.string()
 
         })
         const validationResult = schema.validate(req.body);
