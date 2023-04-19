@@ -36,6 +36,11 @@ const taskSchema = Schema(
       enum: ["Low", "Medium", "Hight"],
       default: "Low",
     },
+    status: {
+      type: String,
+      enum: ["To do", "In progress", "Done"],
+      default: "To do",
+    }
   },
   { versionKey: false }
 );
