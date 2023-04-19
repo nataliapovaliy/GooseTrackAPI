@@ -1,14 +1,18 @@
-const { findUserBy, regUser } = require("../../services/auth");
+const { findUserBy, regUser, createToken, login } = require("../../services/auth");
 
 const registerUser = async (req, res, next) => {
   const { name, email, password } = req.body;
   const user = await findUserBy({ email });
 
-  user
-    ? res.status(409).json({ message: "Email in use" })
-    : await regUser({ name, email, password });
+  if (user) return res.status(409).json({ message: "Email in use" });
+
+  const inRegUser = await regUser({ name, email, password });
+  
+  const token = await createToken(inRegUser);
+  await login(inRegUser._id, token);
 
   res.status(201).json({
+    token,
     user: {
       name,
       email,
