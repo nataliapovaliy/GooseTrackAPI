@@ -36,13 +36,12 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
-    title:{
-      type:String,
-    },
-    status: {
+    title: {
       type: String,
-      enum: ["To do", "In progress", "Done"],
-      default: "To do",
+    },
+    column: {
+      type: String,
+      default: ["To do", "In progress", "Done"]
     }
   },
   { versionKey: false }
