@@ -36,6 +36,14 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
+    title:{
+      type:String,
+    },
+    status: {
+      type: String,
+      enum: ["To do", "In progress", "Done"],
+      default: "To do",
+    }
   },
   { versionKey: false }
 );
