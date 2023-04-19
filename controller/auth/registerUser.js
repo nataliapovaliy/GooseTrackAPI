@@ -7,15 +7,15 @@ const registerUser = async (req, res, next) => {
   if (user) return res.status(409).json({ message: "Email in use" });
 
   const inRegUser = await regUser({ name, email, password });
-  
+
   const token = await createToken(inRegUser);
-  await login(inRegUser._id, token);
+  const logUser =  await login(inRegUser._id, token);
 
   res.status(201).json({
     token,
     user: {
-      name,
-      email,
+      name: logUser.name,
+      avatarURL: logUser.avatarURL,
     },
   });
 };
