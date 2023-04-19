@@ -15,7 +15,7 @@ const removeTask = async (Id) => {
 };
 
 const addTask = async (body) => {
-  return Task.create(body).populate("owner", "_id name avatarURL");
+  return Task.create(body);
 };
 const updateTask = async (id, body) => {
   const task = await Task.findByIdAndUpdate(id, body, { new: true }).populate(
