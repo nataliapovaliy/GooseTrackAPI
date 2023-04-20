@@ -43,7 +43,7 @@ const taskSchema = Schema(
     },
     columnId: {
       type: SchemaTypes.ObjectId,
-      ref: "Column",
+      ref: "column",
     },
   },
   { versionKey: false }

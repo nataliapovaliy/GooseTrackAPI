@@ -6,7 +6,7 @@ const { ctrlWrapper, authMiddleware } = require('../../middleware')
 
 router.use(authMiddleware);
 
-router.get('/', ctrlWrapper(ctrl.getColumn))
+router.get('/', ctrlWrapper(ctrl.getAllColumns))
 router.post('/', ctrlWrapper(ctrl.addColumn))
 router.patch('/:id', ctrlWrapper(ctrl.updateColumn))
 router.delete('/:id', ctrlWrapper(ctrl.deleteColumn))
