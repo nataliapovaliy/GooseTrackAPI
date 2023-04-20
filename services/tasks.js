@@ -1,4 +1,4 @@
-const { Task } = require("../models");
+const { Task, Column } = require("../models");
 const { NotFoundError } = require("../helpers/errors");
 
 const findTasks = async (owner, year, month) => {

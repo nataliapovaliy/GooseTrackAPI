@@ -40,6 +40,9 @@ const taskSchema = Schema(
       type: String,
       enum: ["To do", "In progress", "Done"],
       default: "To do",
+    },
+    columnId: {
+      type: String,
     }
   },
   { versionKey: false }

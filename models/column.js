@@ -1,14 +1,13 @@
-const { Schema, model, SchemaTypes } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const columnSchema = Schema(
     {
-        owner: {
-            type: SchemaTypes.ObjectId,
-            ref: "user",
-        },
-        column: {
+        title: {
             type: String,
-            default: "To do"
+            required: true
+        },
+        columnId:{
+            type:String
         }
     },
     { versionKey: false }

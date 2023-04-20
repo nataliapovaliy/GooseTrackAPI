@@ -1,8 +1,8 @@
-const column = require('../../services/column')
+const columns = require('../../services/column')
 
 const addColumn = async (req, res, next) => {
-    const { _id } = req.user
-    const result = await column.add({ ...req.body, owner: _id })
+    const { title } = req.body
+    const result = await columns.add({ title })
     return res.json({
         date: {
             result
