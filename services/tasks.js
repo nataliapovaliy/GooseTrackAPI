@@ -1,5 +1,6 @@
 const { Task } = require("../models");
 const { NotFoundError } = require("../helpers/errors");
+const { findColumn } = require("./column");
 
 const findTasks = async (owner, year, month) => {
   const tasks = await Task.find({ owner, year, month }).populate(
@@ -15,11 +16,20 @@ const removeTask = async (Id) => {
 };
 
 const createTask = async (body) => {
-  return Task.create(body);
+  const newTask = await Task.create(body);
+  const result = await updateTaskById(newTask._id, {status: newTask.status});
+  return result;
 };
+
 const updateTaskById = async (id, body) => {
-  const task = await Task.findByIdAndUpdate(id, body, { new: true })
-    .populate("owner", "_id name avatarURL")
+  const { status } = body;
+  const { _id } = await findColumn(status);
+
+  const task = await Task.findByIdAndUpdate(
+    id,
+    { ...body, columnId: _id },
+    { new: true }
+  ).populate("owner", "_id name avatarURL");
   if (!task) {
     throw new NotFoundError(`Not found task id: ${id}`);
   }
