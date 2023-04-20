@@ -17,17 +17,20 @@ const removeTask = async (Id) => {
 
 const createTask = async (body) => {
   const newTask = await Task.create(body);
-  const result = await updateTaskById(newTask._id, {status: newTask.status});
+  const result = await updateTaskById(newTask._id, { status: newTask.status });
   return result;
 };
 
 const updateTaskById = async (id, body) => {
   const { status } = body;
-  const { _id } = await findColumn(status);
+  const columnId = await findColumn(status);
+  if (!columnId) {
+    throw new NotFoundError(`You can create a column first.`);
+  }
 
   const task = await Task.findByIdAndUpdate(
     id,
-    { ...body, columnId: _id },
+    { ...body, columnId: columnId._id },
     { new: true }
   ).populate("owner", "_id name avatarURL");
   if (!task) {

@@ -11,7 +11,7 @@ const loginUser = async (req, res, next) => {
   }
 
   const token = await createToken(user);
-  await login(user._id, token);
+  await login(user, token);
 
   res.status(200).json({
     token,
