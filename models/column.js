@@ -2,7 +2,7 @@ const { Schema, model, SchemaTypes } = require("mongoose");
 
 const columnSchema = Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },

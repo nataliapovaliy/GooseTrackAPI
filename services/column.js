@@ -1,9 +1,13 @@
 const { Column } = require("../models");
 
 
-const findColumn = async (title) => {
-  return await Column.findOne({ title });
+const findColumn = async (name) => {
+  return await Column.findOne({ name });
 };
+const getColumns = async (owner) => {
+  const columns = await Column.find({ owner }).populate("owner", "_id title")
+  return columns
+}
 const add = async (body) => {
   return await Column.create(body);
 };
@@ -16,10 +20,11 @@ const addTaskByColumn = async (id, title, task) => {
   );
   return result;
 };
-const remove = async (body) => {};
+const remove = async (body) => { };
 module.exports = {
   findColumn,
   add,
   addTaskByColumn,
   remove,
+  getColumns
 };
