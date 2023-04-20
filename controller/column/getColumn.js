@@ -1,9 +1,9 @@
-const column = require('../../services/column')
+const { findColumn } = require("../../services/column");
 
 
 const getColumn = async (req, res, next) => {
 
-    const result = await column.get(req.body)
+    const result = await findColumn(req.body);
     res.json(result[0]._id)
 }
 module.exports = {

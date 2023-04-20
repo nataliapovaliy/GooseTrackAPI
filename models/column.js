@@ -6,8 +6,8 @@ const columnSchema = Schema(
             type: String,
             required: true
         },
-        columnId:{
-            type:String
+        tasksId:{
+            type:Array
         }
     },
     { versionKey: false }

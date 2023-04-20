@@ -1,4 +1,4 @@
-const { Task, Column } = require("../models");
+const { Task } = require("../models");
 const { NotFoundError } = require("../helpers/errors");
 
 const findTasks = async (owner, year, month) => {
@@ -14,7 +14,7 @@ const removeTask = async (Id) => {
   return task;
 };
 
-const addTask = async (body) => {
+const createTask = async (body) => {
   return Task.create(body);
 };
 const updateTask = async (id, body) => {
@@ -28,4 +28,4 @@ const updateTask = async (id, body) => {
   return task;
 };
 
-module.exports = { findTasks, removeTask, addTask, updateTask };
+module.exports = { findTasks, removeTask, createTask, updateTask };
