@@ -1,5 +1,4 @@
-const { findColumn } = require("../../services/column");
-const { createTask, updateTaskById } = require("../../services/tasks");
+const { createTask} = require("../../services/tasks");
 const moment = require("moment");
 
 
@@ -11,16 +10,11 @@ const addTask = async (req, res, next) => {
 
   const result = await createTask({ ...req.body, year, month, owner: _id, });
   
-  const column = await findColumn(result.status);
-  const id  = column._id;
-  const added = await updateTaskById(result._id, { columnId: id });
-  console.log(id)
-  
   return res.status(201).json({
     status: "success",
     code: "201",
     data: {
-      added,
+      result,
     },
   });
 };

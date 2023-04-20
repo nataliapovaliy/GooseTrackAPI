@@ -62,6 +62,7 @@ module.exports = {
       end: Joi.string(),
       start: Joi.string(),
       createAt: Joi.date().iso(),
+      status: Joi.string()
     });
     const validationResult = schema.validate(req.body);
     if (validationResult.error) {
