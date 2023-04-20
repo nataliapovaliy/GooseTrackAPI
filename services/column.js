@@ -5,7 +5,7 @@ const findColumn = async (name) => {
   return await Column.findOne({ name });
 };
 const getColumns = async (owner) => {
-  const columns = await Column.find({ owner }).populate("owner", "_id name")
+  const columns = await Column.find({ owner }).populate("owner", "_id title")
   return columns
 }
 const add = async (body) => {
