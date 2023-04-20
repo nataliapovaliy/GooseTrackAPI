@@ -42,8 +42,9 @@ const taskSchema = Schema(
       default: "To do",
     },
     columnId: {
-      type: String,
-    }
+      type: SchemaTypes.ObjectId,
+      ref: "Column",
+    },
   },
   { versionKey: false }
 );

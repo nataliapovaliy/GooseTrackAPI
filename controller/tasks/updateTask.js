@@ -1,4 +1,4 @@
-const task = require("../../services/tasks");
+const { updateTaskById } = require("../../services/tasks");
 const moment = require("moment");
 
 const updateTask = async (req, res, next) => {
@@ -7,7 +7,7 @@ const updateTask = async (req, res, next) => {
   const year = body.createAt ? moment(body.createAt).format("YYYY") : undefined;
   const month = body.createAt ? moment(body.createAt).format("MM") : undefined;
 
-  const result = await task.updateTask(_id, {...body, year, month});
+  const result = await updateTaskById(_id, { ...body, year, month });
   res.json({
     status: "success",
     message: "Task updated",
