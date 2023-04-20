@@ -47,6 +47,7 @@ module.exports = {
       end: Joi.string().required(),
       start: Joi.string().required(),
       createAt: Joi.date().iso(),
+      status: Joi.string().valid("To do", "In progress", "Done")
     });
     const validationResult = schema.validate(req.body);
     if (validationResult.error) {

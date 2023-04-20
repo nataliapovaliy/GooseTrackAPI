@@ -9,7 +9,7 @@ const {
 } = require("../../middleware");
 
 router.use(authMiddleware);
-router.get("/logout", ctrlWrapper(ctrl.logout));
+router.delete("/logout", ctrlWrapper(ctrl.logout));
 router.get("/current", ctrlWrapper(ctrl.current));
 router.patch(
   "/info",
