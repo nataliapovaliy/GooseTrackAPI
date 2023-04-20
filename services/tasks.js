@@ -17,15 +17,13 @@ const removeTask = async (Id) => {
 const createTask = async (body) => {
   return Task.create(body);
 };
-const updateTask = async (id, body) => {
-  const task = await Task.findByIdAndUpdate(id, body, { new: true }).populate(
-    "owner",
-    "_id name avatarURL"
-  );
+const updateTaskById = async (id, body) => {
+  const task = await Task.findByIdAndUpdate(id, body, { new: true })
+    .populate("owner", "_id name avatarURL")
   if (!task) {
     throw new NotFoundError(`Not found task id: ${id}`);
   }
   return task;
 };
 
-module.exports = { findTasks, removeTask, createTask, updateTask };
+module.exports = { findTasks, removeTask, createTask, updateTaskById };
