@@ -10,8 +10,11 @@ const findTasks = async (owner, year, month) => {
   return tasks;
 };
 
-const removeTask = async (Id) => {
-  const task = await Task.findByIdAndRemove(Id);
+const removeTask = async (id) => {
+  const task = await Task.findByIdAndRemove(id);
+  if (!task) {
+    throw new NotFoundError(`Not found task id: ${id}`);
+  }
   return task;
 };
 

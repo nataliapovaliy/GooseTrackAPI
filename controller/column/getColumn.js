@@ -1,5 +1,4 @@
-const {  getColumns } = require("../../services/column");
-
+const { getColumns } = require("../../services/column");
 
 const getAllColumns = async (req, res, next) => {
     const { _id } = req.user
@@ -7,6 +6,5 @@ const getAllColumns = async (req, res, next) => {
     res.json(result)
 }
 module.exports = {
-    
     getAllColumns
 }
