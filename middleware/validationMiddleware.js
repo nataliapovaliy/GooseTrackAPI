@@ -43,7 +43,7 @@ module.exports = {
   addTaskValidation: (req, res, next) => {
     const schema = Joi.object({
       title: Joi.string().required(),
-      priority: Joi.string().valid("Low", "Medium", "Hight"),
+      priority: Joi.string().valid("Low", "Medium", "High"),
       end: Joi.string().required(),
       start: Joi.string().required(),
       createAt: Joi.date().iso(),
