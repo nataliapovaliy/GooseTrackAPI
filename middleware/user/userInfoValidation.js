@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { ValidationError } = require('../helpers/errors');
+const { ValidationError } = require('../../helpers/errors');
 
 
 module.exports = {

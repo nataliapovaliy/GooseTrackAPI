@@ -1,14 +1,13 @@
-const { errorHandler } = require("./errorHandler");
-const { ctrlWrapper } = require("./ctrlWrapper");
-const { authMiddleware } = require("./authMiddleware");
-const { uploadCloud } = require("./uploadCloud");
+const { errorHandler } = require("./api/errorHandler");
+const { ctrlWrapper } = require("./api/ctrlWrapper");
+const { authMiddleware } = require("./auth/authMiddleware");
+const { uploadCloud } = require("./user/uploadCloud");
+const { addTaskValidation, updateTaskValidation } = require('./task/taskValidation')
 const {
   loginValidation,
   registerValidation,
-  addTaskValidation,
-  updateTaskValidation,
-} = require("./validationMiddleware");
-const { userInfoValidation } = require('./userInfoValidation')
+} = require("./auth/authUserValidation");
+const { userInfoValidation } = require('./user/userInfoValidation')
 
 module.exports = {
   errorHandler,
