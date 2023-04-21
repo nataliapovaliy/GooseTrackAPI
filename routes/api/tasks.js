@@ -4,6 +4,7 @@ const { authMiddleware, ctrlWrapper, addTaskValidation, updateTaskValidation } =
 const { tasks: ctrl } = require("../../controller");
 
 router.use(authMiddleware);
+
 router.get("/", ctrlWrapper(ctrl.taskPerMth));
 router.post("/", addTaskValidation, ctrlWrapper(ctrl.addTask));
 router.patch("/:id", updateTaskValidation, ctrlWrapper(ctrl.updateTask));

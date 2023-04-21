@@ -1,28 +1,24 @@
 const { Column } = require("../models");
-const { NotFoundError } = require("../helpers/errors");
 
-const findColumn = async (title) => {
-  return await Column.findOne({ title });
-};
-
-const getColumns = async (owner) => {
-  const columns = await Column.find({ owner }).populate("owner", "_id title")
-  return columns
-}
 const createColumn = async (body) => {
   return await Column.create(body);
 };
 
-const remove = async (id) => {
-  const column = await Column.findByIdAndRemove(id);
-  if (!column) {
-    throw new NotFoundError(`Not found column id: ${id}`);
-  }
-  return column;
+const getColumns = async (body) => {
+  return await Column.find(body).populate("owner", "_id title");
 };
+
+const chengeColumn = async (id, title) => {
+  return await Column.findByIdAndUpdate(id, { title }, { new: true });
+};
+
+const removeColumn = async (id) => {
+  return await Column.findByIdAndRemove(id);
+};
+
 module.exports = {
-  findColumn,
   createColumn,
-  remove,
+  removeColumn,
+  chengeColumn,
   getColumns,
 };
