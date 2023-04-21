@@ -10,7 +10,7 @@ const regUser = async ({ name, email, password }) => {
   return await User.create({ name, email, password });
 };
 
-const login = async (_id, token) => {
+const login = async ({ _id }, token) => {
   return await User.findByIdAndUpdate(_id, { token });
 };
 

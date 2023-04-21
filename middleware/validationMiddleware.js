@@ -58,7 +58,7 @@ module.exports = {
   updateTaskValidation: (req, res, next) => {
     const schema = Joi.object({
       title: Joi.string(),
-      priority: Joi.string().valid("Low", "Medium", "Hight"),
+      priority: Joi.string().valid("Low", "Medium", "High"),
       end: Joi.string(),
       start: Joi.string(),
       createAt: Joi.date().iso(),
