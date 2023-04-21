@@ -2,8 +2,7 @@ const { User } = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 const findUserBy = async (data) => {
-  const user = await User.findOne(data);
-  return user;
+  return await User.findOne(data);
 };
 
 const regUser = async ({ name, email, password }) => {
@@ -20,8 +19,7 @@ const createToken = ({ _id }) => {
     id: _id,
   };
 
-  const token = jwt.sign(playload, JWT_SECRET_KEY, { expiresIn: "1h" });
-  return token;
+  return jwt.sign(playload, JWT_SECRET_KEY, { expiresIn: "1h" });
 };
 
 module.exports = {

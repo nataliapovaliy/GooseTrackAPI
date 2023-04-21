@@ -1,10 +1,11 @@
-const { getAllColumns } = require('./getColumn')
-const { addColumn } = require('./addColumn')
-const {deleteColumn} =require('./deleteColumn')
-
+const { getAllColumns } = require("./getColumn");
+const { addColumn } = require("./addColumn");
+const { updateColumn } = require("./updateColumn");
+const { deleteColumn } = require("./deleteColumn");
 
 module.exports = {
-    addColumn,
-    deleteColumn,
-    getAllColumns
-}
+  addColumn,
+  deleteColumn,
+  updateColumn,
+  getAllColumns,
+};
