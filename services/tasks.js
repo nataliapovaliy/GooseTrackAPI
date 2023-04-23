@@ -2,7 +2,6 @@ const { Task } = require("../models");
 const { NotFoundError } = require("../helpers/errors");
 const { getColumns } = require("./column");
 
-
 const findTasks = async (owner, year, month) => {
   const tasks = await Task.find({ owner, year, month }).populate(
     "owner",
@@ -30,18 +29,25 @@ const createTask = async (body) => {
 
 const updateTaskById = async (id, body, owner) => {
   const { status } = body;
-  const columnId = await getColumns({ owner, title: status });
+  let columnId = status;
 
-  if (!columnId) throw new NotFoundError(`You can create a column first.`);
+  if (status) columnId = await findColumn(status, owner);
 
   const task = await Task.findByIdAndUpdate(
     id,
-    { ...body, columnId: columnId[0]._id },
+    { ...body, columnId },
     { new: true }
   ).populate("owner", "_id name avatarURL");
 
   if (!task) throw new NotFoundError(`Not found task id: ${id}`);
   return task;
+};
+
+const findColumn = async (title, owner) => {
+  const columnId = await getColumns({ owner, title });
+
+  if (!columnId[0]) throw new NotFoundError(`You must create a column first.`);
+  return columnId[0]._id;
 };
 
 module.exports = { findTasks, removeTask, createTask, updateTaskById };
