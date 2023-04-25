@@ -16,10 +16,18 @@ const update = async (req, res) => {
   const user = await updateUser(id, updateParam);
   if (!user) throw new NotFoundError("User not found");
 
+  const { name, email, phone, avatarURL, skype, birthday } = user;
   res.json({
     status: "success",
     message: "User updated",
-    user: updateParam,
+    user: {
+      name,
+      email,
+      phone,
+      avatarURL,
+      skype,
+      birthday,
+    },
   });
 };
 
