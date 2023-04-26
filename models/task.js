@@ -1,7 +1,5 @@
 const { Schema, model, SchemaTypes } = require("mongoose");
-const moment = require('moment');
 
-const now = moment(Date.now()).format('YYYY/MM/DD')
 const taskSchema = Schema(
   {
     title: {
@@ -18,7 +16,6 @@ const taskSchema = Schema(
     },
     createAt: {
       type: String,
-      default: now,
       required: true,
     },
     year: {

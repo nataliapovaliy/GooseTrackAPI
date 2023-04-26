@@ -2,7 +2,7 @@ const Joi = require("joi");
 const { ValidationError } = require("../../helpers/errors");
 
 module.exports ={
- 
+
       addTaskValidation: (req, res, next) => {
         const schema = Joi.object({
           title: Joi.string().required(),
