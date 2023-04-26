@@ -18,7 +18,7 @@ const userSchema = Schema(
     },
     phone: {
       type: String,
-      default: null,
+      default: "",
     },
     avatarURL: {
       type: String,
@@ -26,7 +26,7 @@ const userSchema = Schema(
     },
     skype: {
       type: String,
-      default: null,
+      default: "",
     },
     birthday: {
       type: String,
