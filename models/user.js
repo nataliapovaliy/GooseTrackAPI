@@ -1,5 +1,8 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const moment = require("moment");
+
+const now = moment(Date.now()).format("DD/MM/YYYY");
 
 const userSchema = Schema(
   {
@@ -18,7 +21,7 @@ const userSchema = Schema(
     },
     phone: {
       type: String,
-      default: "",
+      default: null
     },
     avatarURL: {
       type: String,
@@ -26,11 +29,11 @@ const userSchema = Schema(
     },
     skype: {
       type: String,
-      default: "",
+      default: null
     },
     birthday: {
       type: String,
-      default: null,
+      default: now,
     },
     token: {
       type: String,
